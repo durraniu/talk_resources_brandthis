@@ -1,0 +1,26 @@
+---
+title: About
+format: html
+---
+
+[{brandthis}](https://github.com/durraniu/brandthis) is an R package with the goal to get you started with branding your docs and apps quickly and efficiently. Following code was used for generating a `_brand.yml` and color palettes for this website:
+
+
+```{r}
+#| eval: false
+
+# Generate a _brand.yml
+res <- brandthis::create_brand(
+  "Use the name 'Iris Dataset'",
+  img = "https://upload.wikimedia.org/wikipedia/commons/d/db/Iris_versicolor_4.jpg",
+  type = "personal",
+  chat_fn = ellmer::chat_github,
+  model = "gpt-4.1",
+  echo = TRUE
+)
+
+# Generate a color palette
+color_palette <- brandthis::create_color_palette(res)
+```
+
+Note that `brandthis` requires an API key of the LLM you'd like to use in your `.Renviron`. See the [documentation of the `ellmer` package](https://ellmer.tidyverse.org/#providers) for more details.

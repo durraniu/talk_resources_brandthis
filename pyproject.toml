@@ -1,0 +1,16 @@
+[project]
+name = "test-closeread"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "brand-yml>=0.1.1",
+    "great-tables>=0.20.0",
+    "plotnine>=0.15.1",
+    "quarto>=0.1.0",
+    "scikit-learn>=1.7.2",
+]
+
+[tool.uv.sources]
+quarto = { git = "https://github.com/quarto-dev/quarto-python.git" }

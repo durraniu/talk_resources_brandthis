@@ -1,0 +1,79 @@
+meta:
+  name:
+    short: Iris Dataset
+    full: Iris Dataset
+  link:
+    home: https://example.com/
+logo: 
+  medium: logo.png
+color:
+  palette:
+    forest-green: '#1B2D0B'
+    green: '#49752E'
+    lavender: '#9B79CD'
+    purple: '#6E2DAB'
+    lilac: '#EFEFF8'
+    white: '#FFFFFF'
+    black: '#1B2D0B'
+  background: lilac
+  foreground: '#1B2D0B'
+  primary: '#6E2DAB'
+  secondary: '#49752E'
+  success: '#49752E'
+  info: '#9B79CD'
+  warning: '#FFB300'
+  danger: '#D7263D'
+  light: '#FFFFFF'
+  dark: '#1B2D0B'
+typography:
+  fonts:
+    - family: Quicksand
+      source: google
+      weight:
+        - 400
+        - 700
+      style:
+        - normal
+        - italic
+    - family: Fira Code
+      source: bunny
+      weight:
+        - 400
+        - 500
+        - 600
+      style:
+        - normal
+        - italic
+  base:
+    family: Quicksand
+    weight: 400
+    size: 16px
+    line-height: 1.5
+  headings:
+    family: Quicksand
+    weight: 700
+    style: normal
+    line-height: 1.2
+    color: '#6E2DAB'
+  monospace:
+    family: Fira Code
+    weight: 400
+    size: 0.9em
+  monospace-inline:
+    family: Fira Code
+    weight: 400
+    size: 0.9em
+    color: '#6E2DAB'
+    background-color: lilac
+  monospace-block:
+    family: Fira Code
+    weight: 400
+    size: 0.9em
+    color: '#1B2D0B'
+    background-color: lilac
+    line-height: 1.4
+  link:
+    weight: 700
+    color: '#6E2DAB'
+    background-color: transparent
+    decoration: underline

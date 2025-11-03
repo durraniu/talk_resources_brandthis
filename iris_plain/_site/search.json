@@ -1,0 +1,268 @@
+[
+  {
+    "objectID": "iris_story.html",
+    "href": "iris_story.html",
+    "title": "Exploring the Iris Dataset",
+    "section": "",
+    "text": "Exploring the Iris Dataset\nThis story explores the famous Iris dataset using R and ggplot2.\n\nSource: Wikimedia\n\n\n\n\nLet’s explore the Iris flowers dataset. \n\n\n\n\nThe Iris dataset contains measurements of sepal length, sepal width, petal length, and petal width for 150 iris flowers, along with their species. It’s a classic dataset for classification and data exploration.\n\n\n\n\nLet’s start by visualizing the distribution of sepal length for each species. We can see that setosa generally has shorter sepals than versicolor and virginica.\n\n\n\n\nNext, let’s examine the petal length. Here, the differences between species are even more pronounced, with setosa having much shorter petals.\n\n\n\n\nNow, let’s look at the relationship between sepal length and sepal width, colored by species. We can observe some clustering, particularly for setosa. \n\n\n\n\nFinally, let’s visualize the relationship between petal length and petal width. This plot clearly shows three distinct clusters, making it easy to separate the species based on these two features. \n\n\n\n\nThis exploration demonstrates how the Iris dataset, despite its simplicity, provides a great foundation for understanding data visualization and basic machine learning concepts.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIris Flowers\n\n\nThese are some beautiful species\n\n\nSepal.Length\nSepal.Width\nPetal.Length\nPetal.Width\nSpecies\n\n\n\n\n5.1\n3.5\n1.4\n0.2\nsetosa\n\n\n4.9\n3.0\n1.4\n0.2\nsetosa\n\n\n4.7\n3.2\n1.3\n0.2\nsetosa\n\n\n4.6\n3.1\n1.5\n0.2\nsetosa\n\n\n5.0\n3.6\n1.4\n0.2\nsetosa\n\n\n5.4\n3.9\n1.7\n0.4\nsetosa"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Iris Machine Learning Project",
+    "section": "",
+    "text": "We begin by loading all the required packages for ML and visualization.\n\nlibrary(randomForest)\nlibrary(caret)\nlibrary(ggplot2)\nlibrary(dplyr)\nlibrary(tidyr)\nlibrary(gt)"
+  },
+  {
+    "objectID": "index.html#load-packages",
+    "href": "index.html#load-packages",
+    "title": "Iris Machine Learning Project",
+    "section": "",
+    "text": "We begin by loading all the required packages for ML and visualization.\n\nlibrary(randomForest)\nlibrary(caret)\nlibrary(ggplot2)\nlibrary(dplyr)\nlibrary(tidyr)\nlibrary(gt)"
+  },
+  {
+    "objectID": "index.html#load-data",
+    "href": "index.html#load-data",
+    "title": "Iris Machine Learning Project",
+    "section": "Load Data",
+    "text": "Load Data\nThe next step is to load the iris dataset:\n\ndata(iris)\niris |&gt; \n    head() |&gt; \n    gt() |&gt; \n    tab_header(title = \"Iris Flowers\")\n\n\n\n\n\n\n\nIris Flowers\n\n\nSepal.Length\nSepal.Width\nPetal.Length\nPetal.Width\nSpecies\n\n\n\n\n5.1\n3.5\n1.4\n0.2\nsetosa\n\n\n4.9\n3.0\n1.4\n0.2\nsetosa\n\n\n4.7\n3.2\n1.3\n0.2\nsetosa\n\n\n4.6\n3.1\n1.5\n0.2\nsetosa\n\n\n5.0\n3.6\n1.4\n0.2\nsetosa\n\n\n5.4\n3.9\n1.7\n0.4\nsetosa"
+  },
+  {
+    "objectID": "index.html#create-feature-matrix-and-target-vector",
+    "href": "index.html#create-feature-matrix-and-target-vector",
+    "title": "Iris Machine Learning Project",
+    "section": "Create feature matrix and target vector",
+    "text": "Create feature matrix and target vector\n\nX &lt;- iris[, 1:4]\ny &lt;- iris$Species"
+  },
+  {
+    "objectID": "index.html#split-the-data-70-train-30-test",
+    "href": "index.html#split-the-data-70-train-30-test",
+    "title": "Iris Machine Learning Project",
+    "section": "Split the data (70% train, 30% test)",
+    "text": "Split the data (70% train, 30% test)\n\nset.seed(42)\ntrain_index &lt;- createDataPartition(y, p = 0.7, list = FALSE)\nX_train &lt;- X[train_index, ]\nX_test  &lt;- X[-train_index, ]\ny_train &lt;- y[train_index]\ny_test  &lt;- y[-train_index]"
+  },
+  {
+    "objectID": "index.html#standardize-features",
+    "href": "index.html#standardize-features",
+    "title": "Iris Machine Learning Project",
+    "section": "Standardize features",
+    "text": "Standardize features\n\n# Calculate mean and sd manually for each column\nscaling_params &lt;- data.frame(\n  feature = colnames(X_train),\n  mean = apply(X_train, 2, mean),\n  sd = apply(X_train, 2, sd)\n)\n\n# Display scaling parameters\nscaling_params |&gt; \n  gt() |&gt; \n  tab_header(title = \"Scaling Parameters\") |&gt;\n  fmt_number(columns = c(mean, sd), decimals = 4)\n\n\n\n\n\n\n\nScaling Parameters\n\n\nfeature\nmean\nsd\n\n\n\n\nSepal.Length\n5.8857\n0.8380\n\n\nSepal.Width\n3.0705\n0.4036\n\n\nPetal.Length\n3.8133\n1.7924\n\n\nPetal.Width\n1.2162\n0.7796\n\n\n\n\n\n\n# Apply scaling\nX_train_scaled &lt;- scale(X_train, center = scaling_params$mean, scale = scaling_params$sd)\nX_test_scaled &lt;- scale(X_test, center = scaling_params$mean, scale = scaling_params$sd)"
+  },
+  {
+    "objectID": "index.html#train-a-random-forest-classifier",
+    "href": "index.html#train-a-random-forest-classifier",
+    "title": "Iris Machine Learning Project",
+    "section": "Train a Random Forest classifier",
+    "text": "Train a Random Forest classifier\n\nset.seed(42)\nmodel &lt;- randomForest(x = X_train_scaled, \n                     y = y_train, \n                     ntree = 100, \n                     importance = TRUE)"
+  },
+  {
+    "objectID": "index.html#make-predictions",
+    "href": "index.html#make-predictions",
+    "title": "Iris Machine Learning Project",
+    "section": "Make predictions",
+    "text": "Make predictions\n\ny_pred &lt;- predict(model, X_test_scaled)"
+  },
+  {
+    "objectID": "index.html#evaluate-the-model",
+    "href": "index.html#evaluate-the-model",
+    "title": "Iris Machine Learning Project",
+    "section": "Evaluate the model",
+    "text": "Evaluate the model\n\naccuracy &lt;- sum(y_pred == y_test) / length(y_test)\ncat(\"Model Accuracy:\", sprintf(\"%.2f%%\", accuracy * 100), \"\\n\")\n\nModel Accuracy: 93.33%"
+  },
+  {
+    "objectID": "index.html#classification-report",
+    "href": "index.html#classification-report",
+    "title": "Iris Machine Learning Project",
+    "section": "Classification Report",
+    "text": "Classification Report\n\ncat(\"Classification Report:\\n\")\n\nClassification Report:\n\nconf_matrix &lt;- confusionMatrix(y_pred, y_test)\nconf_matrix \n\nConfusion Matrix and Statistics\n\n            Reference\nPrediction   setosa versicolor virginica\n  setosa         15          0         0\n  versicolor      0         14         2\n  virginica       0          1        13\n\nOverall Statistics\n                                         \n               Accuracy : 0.9333         \n                 95% CI : (0.8173, 0.986)\n    No Information Rate : 0.3333         \n    P-Value [Acc &gt; NIR] : &lt; 2.2e-16      \n                                         \n                  Kappa : 0.9            \n                                         \n Mcnemar's Test P-Value : NA             \n\nStatistics by Class:\n\n                     Class: setosa Class: versicolor Class: virginica\nSensitivity                 1.0000            0.9333           0.8667\nSpecificity                 1.0000            0.9333           0.9667\nPos Pred Value              1.0000            0.8750           0.9286\nNeg Pred Value              1.0000            0.9655           0.9355\nPrevalence                  0.3333            0.3333           0.3333\nDetection Rate              0.3333            0.3111           0.2889\nDetection Prevalence        0.3333            0.3556           0.3111\nBalanced Accuracy           1.0000            0.9333           0.9167"
+  },
+  {
+    "objectID": "index.html#confusion-matrix-for-plotting",
+    "href": "index.html#confusion-matrix-for-plotting",
+    "title": "Iris Machine Learning Project",
+    "section": "Confusion Matrix for Plotting",
+    "text": "Confusion Matrix for Plotting\n\ncm &lt;- table(Actual = y_test, Predicted = y_pred)\ncm_df &lt;- as.data.frame(cm)"
+  },
+  {
+    "objectID": "index.html#plot-1-confusion-matrix",
+    "href": "index.html#plot-1-confusion-matrix",
+    "title": "Iris Machine Learning Project",
+    "section": "Plot 1: Confusion Matrix",
+    "text": "Plot 1: Confusion Matrix\n\nconfusion_plot &lt;- ggplot(cm_df, aes(x = Predicted, y = Actual, fill = Freq)) +\n  geom_tile(color = \"white\", linewidth = 1.5) +\n  geom_text(aes(label = Freq), color = \"white\", size = 12, fontface = \"bold\") +\n  labs(title = \"Confusion Matrix\", \n       x = \"Predicted Species\", \n       y = \"Actual Species\",\n       fill = \"Count\") +\n  theme_minimal()\n\nconfusion_plot"
+  },
+  {
+    "objectID": "index.html#feature-importance",
+    "href": "index.html#feature-importance",
+    "title": "Iris Machine Learning Project",
+    "section": "Feature importance",
+    "text": "Feature importance\n\nfeature_importance &lt;- data.frame(\n  feature = rownames(importance(model)),\n  importance = importance(model)[, \"MeanDecreaseGini\"]\n) %&gt;%\n  arrange(desc(importance))\n\nfeature_importance |&gt; \n  gt() |&gt; \n  tab_header(title = \"Feature Importance\") |&gt;\n  fmt_number(columns = importance, decimals = 4)\n\n\n\n\n\n\n\nFeature Importance\n\n\nfeature\nimportance\n\n\n\n\nPetal.Length\n30.8052\n\n\nPetal.Width\n29.6161\n\n\nSepal.Length\n6.9387\n\n\nSepal.Width\n1.8772"
+  },
+  {
+    "objectID": "index.html#plot-2-feature-importance",
+    "href": "index.html#plot-2-feature-importance",
+    "title": "Iris Machine Learning Project",
+    "section": "Plot 2: Feature Importance",
+    "text": "Plot 2: Feature Importance\n\nimportance_plot &lt;- ggplot(feature_importance, \n                         aes(x = reorder(feature, importance), y = importance)) +\n  geom_col(alpha = 0.8, fill = \"steelblue\") +\n  coord_flip() +\n  labs(title = \"Feature Importance in Random Forest Model\",\n       x = \"Feature\",\n       y = \"Importance Score\") +\n  theme_minimal() +\n  theme(plot.title = element_text(hjust = 0.5))\n\nimportance_plot"
+  },
+  {
+    "objectID": "index.html#create-predictions-dataframe-for-visualization",
+    "href": "index.html#create-predictions-dataframe-for-visualization",
+    "title": "Iris Machine Learning Project",
+    "section": "Create predictions DataFrame for visualization",
+    "text": "Create predictions DataFrame for visualization\n\ntest_results &lt;- as.data.frame(X_test)\ncolnames(test_results) &lt;- colnames(X)\ntest_results$actual &lt;- y_test\ntest_results$predicted &lt;- y_pred\ntest_results$correct &lt;- test_results$actual == test_results$predicted"
+  },
+  {
+    "objectID": "index.html#plot-3-prediction-results-using-first-two-features",
+    "href": "index.html#plot-3-prediction-results-using-first-two-features",
+    "title": "Iris Machine Learning Project",
+    "section": "Plot 3: Prediction Results (using first two features)",
+    "text": "Plot 3: Prediction Results (using first two features)\n\nprediction_plot &lt;- ggplot(test_results, \n                         aes(x = Sepal.Length, y = Sepal.Width, \n                             color = predicted, shape = actual)) +\n  geom_point(size = 4, alpha = 0.7) +\n  labs(title = \"Model Predictions on Test Set\",\n       x = \"Sepal Length (cm)\",\n       y = \"Sepal Width (cm)\",\n       color = \"Predicted\",\n       shape = \"Actual\") +\n  theme_minimal() +\n  theme(plot.title = element_text(hjust = 0.5))\n\nprediction_plot"
+  },
+  {
+    "objectID": "index.html#save-the-model-and-preprocessing-parameters-to-disk",
+    "href": "index.html#save-the-model-and-preprocessing-parameters-to-disk",
+    "title": "Iris Machine Learning Project",
+    "section": "Save the model and preprocessing parameters to disk",
+    "text": "Save the model and preprocessing parameters to disk\n\nsaveRDS(model, \"iris_rf_model.rds\")\nsaveRDS(scaling_params, \"iris_scaler.rds\")\n\ncat(\"\\nModel saved to 'iris_rf_model.rds'\\n\")\n\n\nModel saved to 'iris_rf_model.rds'\n\ncat(\"Scaler saved to 'iris_scaler.rds'\\n\")\n\nScaler saved to 'iris_scaler.rds'"
+  },
+  {
+    "objectID": "index-reveal.html#load-packages",
+    "href": "index-reveal.html#load-packages",
+    "title": "Iris Machine Learning Project",
+    "section": "Load Packages",
+    "text": "Load Packages\nWe begin by loading all the required packages for ML and visualization."
+  },
+  {
+    "objectID": "index-reveal.html#load-data",
+    "href": "index-reveal.html#load-data",
+    "title": "Iris Machine Learning Project",
+    "section": "Load Data",
+    "text": "Load Data\nThe next step is to load the iris dataset:\n\n\n\n\nTable 1\n\n\n\n\n\n\n\n\n\nIris Flowers\n\n\nSepal.Length\nSepal.Width\nPetal.Length\nPetal.Width\nSpecies\n\n\n\n\n5.1\n3.5\n1.4\n0.2\nsetosa\n\n\n4.9\n3.0\n1.4\n0.2\nsetosa\n\n\n4.7\n3.2\n1.3\n0.2\nsetosa\n\n\n4.6\n3.1\n1.5\n0.2\nsetosa\n\n\n5.0\n3.6\n1.4\n0.2\nsetosa\n\n\n5.4\n3.9\n1.7\n0.4\nsetosa"
+  },
+  {
+    "objectID": "index-reveal.html#create-feature-matrix-and-target-vector",
+    "href": "index-reveal.html#create-feature-matrix-and-target-vector",
+    "title": "Iris Machine Learning Project",
+    "section": "Create feature matrix and target vector",
+    "text": "Create feature matrix and target vector"
+  },
+  {
+    "objectID": "index-reveal.html#split-the-data-70-train-30-test",
+    "href": "index-reveal.html#split-the-data-70-train-30-test",
+    "title": "Iris Machine Learning Project",
+    "section": "Split the data (70% train, 30% test)",
+    "text": "Split the data (70% train, 30% test)"
+  },
+  {
+    "objectID": "index-reveal.html#standardize-features",
+    "href": "index-reveal.html#standardize-features",
+    "title": "Iris Machine Learning Project",
+    "section": "Standardize features",
+    "text": "Standardize features\n\n\n\n\n\n\n\n\nScaling Parameters\n\n\nfeature\nmean\nsd\n\n\n\n\nSepal.Length\n5.8857\n0.8380\n\n\nSepal.Width\n3.0705\n0.4036\n\n\nPetal.Length\n3.8133\n1.7924\n\n\nPetal.Width\n1.2162\n0.7796"
+  },
+  {
+    "objectID": "index-reveal.html#train-a-random-forest-classifier",
+    "href": "index-reveal.html#train-a-random-forest-classifier",
+    "title": "Iris Machine Learning Project",
+    "section": "Train a Random Forest classifier",
+    "text": "Train a Random Forest classifier"
+  },
+  {
+    "objectID": "index-reveal.html#make-predictions",
+    "href": "index-reveal.html#make-predictions",
+    "title": "Iris Machine Learning Project",
+    "section": "Make predictions",
+    "text": "Make predictions"
+  },
+  {
+    "objectID": "index-reveal.html#evaluate-the-model",
+    "href": "index-reveal.html#evaluate-the-model",
+    "title": "Iris Machine Learning Project",
+    "section": "Evaluate the model",
+    "text": "Evaluate the model\n\n\nModel Accuracy: 93.33%"
+  },
+  {
+    "objectID": "index-reveal.html#classification-report",
+    "href": "index-reveal.html#classification-report",
+    "title": "Iris Machine Learning Project",
+    "section": "Classification Report",
+    "text": "Classification Report\n\n\nClassification Report:\n\n\nConfusion Matrix and Statistics\n\n            Reference\nPrediction   setosa versicolor virginica\n  setosa         15          0         0\n  versicolor      0         14         2\n  virginica       0          1        13\n\nOverall Statistics\n                                         \n               Accuracy : 0.9333         \n                 95% CI : (0.8173, 0.986)\n    No Information Rate : 0.3333         \n    P-Value [Acc &gt; NIR] : &lt; 2.2e-16      \n                                         \n                  Kappa : 0.9            \n                                         \n Mcnemar's Test P-Value : NA             \n\nStatistics by Class:\n\n                     Class: setosa Class: versicolor Class: virginica\nSensitivity                 1.0000            0.9333           0.8667\nSpecificity                 1.0000            0.9333           0.9667\nPos Pred Value              1.0000            0.8750           0.9286\nNeg Pred Value              1.0000            0.9655           0.9355\nPrevalence                  0.3333            0.3333           0.3333\nDetection Rate              0.3333            0.3111           0.2889\nDetection Prevalence        0.3333            0.3556           0.3111\nBalanced Accuracy           1.0000            0.9333           0.9167"
+  },
+  {
+    "objectID": "index-reveal.html#confusion-matrix-for-plotting",
+    "href": "index-reveal.html#confusion-matrix-for-plotting",
+    "title": "Iris Machine Learning Project",
+    "section": "Confusion Matrix for Plotting",
+    "text": "Confusion Matrix for Plotting"
+  },
+  {
+    "objectID": "index-reveal.html#plot-1-confusion-matrix",
+    "href": "index-reveal.html#plot-1-confusion-matrix",
+    "title": "Iris Machine Learning Project",
+    "section": "Plot 1: Confusion Matrix",
+    "text": "Plot 1: Confusion Matrix"
+  },
+  {
+    "objectID": "index-reveal.html#feature-importance",
+    "href": "index-reveal.html#feature-importance",
+    "title": "Iris Machine Learning Project",
+    "section": "Feature importance",
+    "text": "Feature importance\n\n\n\n\n\n\n\n\nFeature Importance\n\n\nfeature\nimportance\n\n\n\n\nPetal.Length\n30.8052\n\n\nPetal.Width\n29.6161\n\n\nSepal.Length\n6.9387\n\n\nSepal.Width\n1.8772"
+  },
+  {
+    "objectID": "index-reveal.html#plot-2-feature-importance",
+    "href": "index-reveal.html#plot-2-feature-importance",
+    "title": "Iris Machine Learning Project",
+    "section": "Plot 2: Feature Importance",
+    "text": "Plot 2: Feature Importance"
+  },
+  {
+    "objectID": "index-reveal.html#create-predictions-dataframe-for-visualization",
+    "href": "index-reveal.html#create-predictions-dataframe-for-visualization",
+    "title": "Iris Machine Learning Project",
+    "section": "Create predictions DataFrame for visualization",
+    "text": "Create predictions DataFrame for visualization"
+  },
+  {
+    "objectID": "index-reveal.html#plot-3-prediction-results-using-first-two-features",
+    "href": "index-reveal.html#plot-3-prediction-results-using-first-two-features",
+    "title": "Iris Machine Learning Project",
+    "section": "Plot 3: Prediction Results (using first two features)",
+    "text": "Plot 3: Prediction Results (using first two features)"
+  },
+  {
+    "objectID": "index-reveal.html#save-the-model-and-preprocessing-parameters-to-disk",
+    "href": "index-reveal.html#save-the-model-and-preprocessing-parameters-to-disk",
+    "title": "Iris Machine Learning Project",
+    "section": "Save the model and preprocessing parameters to disk",
+    "text": "Save the model and preprocessing parameters to disk\n\n\n\nModel saved to 'iris_rf_model.rds'\n\n\nScaler saved to 'iris_scaler.rds'"
+  },
+  {
+    "objectID": "presentation.html#iris-data",
+    "href": "presentation.html#iris-data",
+    "title": "Iris Machine Learning Project",
+    "section": "Iris Data",
+    "text": "Iris Data\nContains three species of 150 flowers"
+  },
+  {
+    "objectID": "presentation.html#ml-model",
+    "href": "presentation.html#ml-model",
+    "title": "Iris Machine Learning Project",
+    "section": "ML Model",
+    "text": "ML Model\nWe fitted a random forest model and obtained the following Confusion Matrix:"
+  },
+  {
+    "objectID": "presentation.html#feature-importance",
+    "href": "presentation.html#feature-importance",
+    "title": "Iris Machine Learning Project",
+    "section": "Feature Importance",
+    "text": "Feature Importance"
+  },
+  {
+    "objectID": "presentation.html#prediction-results",
+    "href": "presentation.html#prediction-results",
+    "title": "Iris Machine Learning Project",
+    "section": "Prediction Results",
+    "text": "Prediction Results"
+  }
+]

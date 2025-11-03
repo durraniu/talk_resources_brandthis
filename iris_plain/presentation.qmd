@@ -1,0 +1,24 @@
+---
+title: "Iris Machine Learning Project"
+warning: false
+message: false
+format: revealjs
+---
+
+## Iris Data
+
+Contains three species of 150 flowers
+
+## ML Model 
+
+We fitted a random forest model and obtained the following Confusion Matrix:
+
+{{< embed index.qmd#confusion_plot >}}
+
+## Feature Importance
+
+{{< embed index.qmd#importance_plot >}}
+
+## Prediction Results
+
+{{< embed index.qmd#prediction_plot >}}

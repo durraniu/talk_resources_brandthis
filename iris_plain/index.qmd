@@ -1,0 +1,217 @@
+---
+title: "Iris Machine Learning Project"
+warning: false
+message: false
+format:
+  html: 
+    other-links:
+      - href: iris_story.html
+        icon: speedometer
+        text: Data Exploration
+      - href: presentation.html
+        icon: speedometer
+        text: Presentation
+  typst: default
+---
+
+## Load Packages
+We begin by loading all the required packages for ML and visualization.
+
+
+```{r}
+#| label: setup
+library(randomForest)
+library(caret)
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(gt)
+```
+
+## Load Data
+
+The next step is to load the `iris` dataset:
+
+```{r}
+#| label: data1
+data(iris)
+iris |> 
+    head() |> 
+    gt() |> 
+    tab_header(title = "Iris Flowers")
+```
+
+## Create feature matrix and target vector
+
+```{r}
+#| label: data2
+X <- iris[, 1:4]
+y <- iris$Species
+```
+
+## Split the data (70% train, 30% test)
+
+```{r}
+#| label: data3
+set.seed(42)
+train_index <- createDataPartition(y, p = 0.7, list = FALSE)
+X_train <- X[train_index, ]
+X_test  <- X[-train_index, ]
+y_train <- y[train_index]
+y_test  <- y[-train_index]
+```
+
+## Standardize features
+
+```{r}
+#| label: standardization
+# Calculate mean and sd manually for each column
+scaling_params <- data.frame(
+  feature = colnames(X_train),
+  mean = apply(X_train, 2, mean),
+  sd = apply(X_train, 2, sd)
+)
+
+# Display scaling parameters
+scaling_params |> 
+  gt() |> 
+  tab_header(title = "Scaling Parameters") |>
+  fmt_number(columns = c(mean, sd), decimals = 4)
+
+# Apply scaling
+X_train_scaled <- scale(X_train, center = scaling_params$mean, scale = scaling_params$sd)
+X_test_scaled <- scale(X_test, center = scaling_params$mean, scale = scaling_params$sd)
+```
+
+## Train a Random Forest classifier
+
+```{r}
+#| label: train
+set.seed(42)
+model <- randomForest(x = X_train_scaled, 
+                     y = y_train, 
+                     ntree = 100, 
+                     importance = TRUE)
+```
+
+## Make predictions
+
+```{r}
+#| label: predict
+y_pred <- predict(model, X_test_scaled)
+```
+
+## Evaluate the model
+
+```{r}
+#| label: evaluate
+accuracy <- sum(y_pred == y_test) / length(y_test)
+cat("Model Accuracy:", sprintf("%.2f%%", accuracy * 100), "\n")
+```
+
+## Classification Report
+
+```{r}
+#| label: report
+cat("Classification Report:\n")
+conf_matrix <- confusionMatrix(y_pred, y_test)
+conf_matrix 
+```
+
+## Confusion Matrix for Plotting
+
+```{r}
+#| label: confusion_matrix
+cm <- table(Actual = y_test, Predicted = y_pred)
+cm_df <- as.data.frame(cm)
+```
+
+## Plot 1: Confusion Matrix
+
+```{r}
+#| label: confusion_plot
+confusion_plot <- ggplot(cm_df, aes(x = Predicted, y = Actual, fill = Freq)) +
+  geom_tile(color = "white", linewidth = 1.5) +
+  geom_text(aes(label = Freq), color = "white", size = 12, fontface = "bold") +
+  labs(title = "Confusion Matrix", 
+       x = "Predicted Species", 
+       y = "Actual Species",
+       fill = "Count") +
+  theme_minimal()
+
+confusion_plot
+```
+
+## Feature importance
+
+```{r}
+#| label: feature_importance
+feature_importance <- data.frame(
+  feature = rownames(importance(model)),
+  importance = importance(model)[, "MeanDecreaseGini"]
+) %>%
+  arrange(desc(importance))
+
+feature_importance |> 
+  gt() |> 
+  tab_header(title = "Feature Importance") |>
+  fmt_number(columns = importance, decimals = 4)
+```
+
+
+## Plot 2: Feature Importance
+
+```{r}
+#| label: importance_plot
+importance_plot <- ggplot(feature_importance, 
+                         aes(x = reorder(feature, importance), y = importance)) +
+  geom_col(alpha = 0.8, fill = "steelblue") +
+  coord_flip() +
+  labs(title = "Feature Importance in Random Forest Model",
+       x = "Feature",
+       y = "Importance Score") +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5))
+
+importance_plot
+```
+
+## Create predictions DataFrame for visualization
+
+```{r}
+#| label: pred_df
+test_results <- as.data.frame(X_test)
+colnames(test_results) <- colnames(X)
+test_results$actual <- y_test
+test_results$predicted <- y_pred
+test_results$correct <- test_results$actual == test_results$predicted
+```
+
+## Plot 3: Prediction Results (using first two features)
+
+```{r}
+#| label: prediction_plot
+prediction_plot <- ggplot(test_results, 
+                         aes(x = Sepal.Length, y = Sepal.Width, 
+                             color = predicted, shape = actual)) +
+  geom_point(size = 4, alpha = 0.7) +
+  labs(title = "Model Predictions on Test Set",
+       x = "Sepal Length (cm)",
+       y = "Sepal Width (cm)",
+       color = "Predicted",
+       shape = "Actual") +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5))
+
+prediction_plot
+```
+
+## Save the model and preprocessing parameters to disk
+
+```{r}
+saveRDS(model, "iris_rf_model.rds")
+saveRDS(scaling_params, "iris_scaler.rds")
+
+cat("\nModel saved to 'iris_rf_model.rds'\n")
+cat("Scaler saved to 'iris_scaler.rds'\n")
+```

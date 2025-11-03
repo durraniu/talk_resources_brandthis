@@ -1,0 +1,12 @@
+project:
+  type: website
+
+website:
+  title: "Iris ML"
+  navbar:
+    title: "{brandyml} Demo"
+    left:
+       - about.qmd
+    tools:
+      - icon: github
+        href: https://github.com/durraniu/brandthis

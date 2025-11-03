@@ -1,0 +1,111 @@
+---
+format: 
+  closeread-html:
+    remove-header-space: true
+---
+
+# Exploring the Iris Dataset
+
+This story explores the famous Iris dataset using R 
+and `ggplot2`.
+
+![](https://upload.wikimedia.org/wikipedia/commons/d/db/Iris_versicolor_4.jpg)
+
+[Source: Wikimedia](https://upload.wikimedia.org/wikipedia/commons/d/db/Iris_versicolor_4.jpg)
+
+:::{.cr-section layout="sidebar-left"}
+
+Let's explore the Iris flowers dataset.
+[@cr-setup]{scale-by="1.3"}
+
+:::{#cr-setup}
+```{r}
+#| warning: false
+library(ggplot2)
+library(gt)
+
+data(iris)
+
+head(iris) |> 
+  gt() |> 
+  tab_header(
+    title = md("**Iris Flowers**"),
+    subtitle = "These are some beautiful species"
+  ) |> 
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_column_labels()
+  )
+```
+:::
+
+The Iris dataset contains measurements of sepal 
+length, sepal width, petal length, and petal width 
+for 150 iris flowers, along with their species. It's
+a classic dataset for classification and data 
+exploration.
+
+Let's start by visualizing the distribution of sepal
+length for each species. We can see that *setosa* 
+generally has shorter sepals than *versicolor* and 
+*virginica*. [@cr-sepal-length]
+
+:::{#cr-sepal-length}
+```{r}
+ggplot(iris, aes(x = Species, y = Sepal.Length, fill = Species)) +
+  geom_boxplot(alpha = 0.4) +
+  labs(title = "Sepal Length by Species",
+       y = "Sepal Length (cm)") 
+```
+:::
+
+Next, let's examine the petal length. Here, the 
+differences between species are even more 
+pronounced, with *setosa* having much shorter 
+petals. [@cr-petal-length]
+
+:::{#cr-petal-length}
+```{r}
+ggplot(iris, aes(x = Species, y = Petal.Length, fill = Species)) +
+  geom_boxplot(alpha = 0.4) +
+  labs(title = "Petal Length by Species",
+       y = "Petal Length (cm)") 
+```
+:::
+
+Now, let's look at the relationship between sepal 
+length and sepal width, colored by species. We can 
+observe some clustering, particularly for *setosa*. 
+[@cr-sepal-scatter]
+
+:::{#cr-sepal-scatter}
+```{r}
+ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width, fill = Species)) +
+  geom_point(size = 5, alpha = 0.6, shape = 21, color = "white") +
+  labs(title = "Sepal Length vs. Sepal Width by Species",
+       x = "Sepal Length (cm)",
+       y = "Sepal Width (cm)") 
+```
+:::
+
+Finally, let's visualize the relationship between 
+petal length and petal width. This plot clearly 
+shows three distinct clusters, making it easy to 
+separate the species based on these two features. 
+[@cr-petal-scatter]
+
+:::{#cr-petal-scatter}
+```{r}
+ggplot(iris, aes(x = Petal.Length, y = Petal.Width, fill = Species)) +
+  geom_point(size = 5, alpha = 0.6, shape = 21, color = "white") +
+  labs(title = "Petal Length vs. Petal Width by Species",
+       x = "Petal Length (cm)",
+       y = "Petal Width (cm)") 
+```
+:::
+
+This exploration demonstrates how the Iris dataset, 
+despite its simplicity, provides a great foundation 
+for understanding data visualization and basic 
+machine learning concepts.
+:::

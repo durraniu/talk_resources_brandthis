@@ -1,0 +1,46 @@
+---
+title: "Iris Project"
+warning: false
+message: false
+format:
+  html: 
+    other-links:
+      - href: iris_story.html
+        icon: journal-arrow-down
+        text: Data Exploration
+      - href: ml.html
+        icon: speedometer
+        text: Machine Learning with R
+      - href: ml_iris_py.html
+        icon: speedometer
+        text: Machine Learning with Python
+      - href: presentation.html
+        icon: file-ppt
+        text: Presentation
+  typst: default
+---
+
+## Overview
+
+This study explores and models the Iris flower species as a function of sepal and petal features. 
+
+::: {.content-hidden when-format="typst"}
+![](https://upload.wikimedia.org/wikipedia/commons/d/db/Iris_versicolor_4.jpg){width=500}
+
+[Source: Wikimedia](https://upload.wikimedia.org/wikipedia/commons/d/db/Iris_versicolor_4.jpg)
+:::
+
+This famous data set gives the measurements in centimeters of the 
+variables sepal length and width and petal length and width, 
+respectively, for 50 flowers from each of 3 species of iris. The species 
+are Iris setosa, versicolor, and virginica.
+
+Explore the `Other Links` on the right for data exploration, ML, and presentation outputs.
+
+## Acknowledegments
+
+We are thankful to the authors of the following packages and frameworks:
+
+* [Quarto CLI](https://github.com/quarto-dev/quarto-cli) and [quarto](https://github.com/quarto-dev/quarto-r) packages  
+* [brand.yml](https://posit-dev.github.io/brand-yml/)  
+* [Quarto Examples](https://quarto.org/docs/authoring/brand.html)  
