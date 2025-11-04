@@ -115,7 +115,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="index.pdf"><i class="bi bi-file-pdf"></i>Typst</a></li></ul></div><div class="quarto-other-links"><h2>Other Links</h2><ul><li><a href="iris_story.html"><i class="bi bi-journal-arrow-down"></i>Data Exploration</a></li><li><a href="ml.html"><i class="bi bi-speedometer"></i>Machine Learning with R</a></li><li><a href="ml_iris_py.html"><i class="bi bi-speedometer"></i>Machine Learning with Python</a></li><li><a href="presentation.html"><i class="bi bi-file-ppt"></i>Presentation</a></li></ul></div></div>
+    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="index.pdf"><i class="bi bi-file-pdf"></i>Typst</a></li></ul></div><div class="quarto-other-links"><h2>Other Links</h2><ul><li><a href="iris_story.html"><i class="bi bi-journal-arrow-down"></i>Data Exploration</a></li><li><a href="ml.html"><i class="bi bi-speedometer"></i>ML with R</a></li><li><a href="ml_iris_py.html"><i class="bi bi-speedometer"></i>ML with Python</a></li><li><a href="presentation.html"><i class="bi bi-file-ppt"></i>Presentation</a></li><li><a href="https://umair.shinyapps.io/iris_brand/"><i class="bi bi-window-sidebar"></i>Shiny App</a></li></ul></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -234,7 +234,7 @@ ul.task-list li input[type="checkbox"] {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/dru\.quarto\.pub\/brandthis-demo");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

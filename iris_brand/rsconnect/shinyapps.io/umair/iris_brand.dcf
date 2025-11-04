@@ -1,0 +1,13 @@
+name: iris_brand
+title: iris_brand
+username: umair
+account: umair
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 15956441
+bundleId: 11127489
+url: https://umair.shinyapps.io/iris_brand/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: .posit/publish/deployments/deployment-03JM.toml|.posit/publish/deployments/deployment-EQQI.toml|.posit/publish/deployments/renv.lock|.posit/publish/iris_brand-1DIA.toml|.posit/publish/iris_brand-CS16.toml|_publish.yml|_quarto.yml|about.qmd|branding.R|index.qmd|iris_story.qmd|ml.qmd|ml_iris_py.ipynb|presentation.qmd|_extensions|_site

@@ -10,13 +10,16 @@ format:
         text: Data Exploration
       - href: ml.html
         icon: speedometer
-        text: Machine Learning with R
+        text: ML with R
       - href: ml_iris_py.html
         icon: speedometer
-        text: Machine Learning with Python
+        text: ML with Python
       - href: presentation.html
         icon: file-ppt
         text: Presentation
+      - href: https://umair.shinyapps.io/iris_brand/
+        icon: window-sidebar
+        text: Shiny App
   typst: default
 ---
 

@@ -125,9 +125,9 @@ ul.task-list li input[type="checkbox"] {
       <!-- user-provided yaml closeread style options -->
       <style>
         :root {
-          --cr-narrative-background-color-sidebar: #522180;
+          --cr-section-background-color: transparent;
 --cr-narrative-text-color-sidebar: #EFEFF8;
---cr-section-background-color: transparent;
+--cr-narrative-background-color-sidebar: #522180;
         }
       </style>
     
@@ -140,7 +140,7 @@ ul.task-list li input[type="checkbox"] {
 <p>This story explores the famous Iris dataset using R and <code>ggplot2</code>.</p>
 <div class="cr-section cr-column-screen sidebar-left">
 <div class="narrative-col">
-<div class="trigger new-trigger" data-scale-by="1.3" data-focus-on="cr-iris">
+<div class="trigger new-trigger" data-focus-on="cr-iris" data-scale-by="1.3">
 <div class="narrative">
 <p>Let’s explore the Iris flowers dataset. </p>
 </div>
@@ -184,23 +184,23 @@ ul.task-list li input[type="checkbox"] {
 <div id="cr-iris" class="sticky">
 <div class="cell">
 <div class="cell-output-display">
-<div id="gpgtnzpseh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#gpgtnzpseh table {
+<div id="ncgcsnajjm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ncgcsnajjm table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#gpgtnzpseh thead, #gpgtnzpseh tbody, #gpgtnzpseh tfoot, #gpgtnzpseh tr, #gpgtnzpseh td, #gpgtnzpseh th {
+#ncgcsnajjm thead, #ncgcsnajjm tbody, #ncgcsnajjm tfoot, #ncgcsnajjm tr, #ncgcsnajjm td, #ncgcsnajjm th {
   border-style: none;
 }
 
-#gpgtnzpseh p {
+#ncgcsnajjm p {
   margin: 0;
   padding: 0;
 }
 
-#gpgtnzpseh .gt_table {
+#ncgcsnajjm .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -226,12 +226,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#gpgtnzpseh .gt_caption {
+#ncgcsnajjm .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#gpgtnzpseh .gt_title {
+#ncgcsnajjm .gt_title {
   color: #1B2D0B;
   font-size: 125%;
   font-weight: initial;
@@ -243,7 +243,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#gpgtnzpseh .gt_subtitle {
+#ncgcsnajjm .gt_subtitle {
   color: #1B2D0B;
   font-size: 85%;
   font-weight: initial;
@@ -255,7 +255,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#gpgtnzpseh .gt_heading {
+#ncgcsnajjm .gt_heading {
   background-color: #EFEFF8;
   text-align: center;
   border-bottom-color: #EFEFF8;
@@ -267,13 +267,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#gpgtnzpseh .gt_bottom_border {
+#ncgcsnajjm .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#gpgtnzpseh .gt_col_headings {
+#ncgcsnajjm .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -288,7 +288,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#gpgtnzpseh .gt_col_heading {
+#ncgcsnajjm .gt_col_heading {
   color: #1B2D0B;
   background-color: #EFEFF8;
   font-size: 100%;
@@ -308,7 +308,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#gpgtnzpseh .gt_column_spanner_outer {
+#ncgcsnajjm .gt_column_spanner_outer {
   color: #1B2D0B;
   background-color: #EFEFF8;
   font-size: 100%;
@@ -320,15 +320,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#gpgtnzpseh .gt_column_spanner_outer:first-child {
+#ncgcsnajjm .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#gpgtnzpseh .gt_column_spanner_outer:last-child {
+#ncgcsnajjm .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#gpgtnzpseh .gt_column_spanner {
+#ncgcsnajjm .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -340,11 +340,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#gpgtnzpseh .gt_spanner_row {
+#ncgcsnajjm .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#gpgtnzpseh .gt_group_heading {
+#ncgcsnajjm .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -370,7 +370,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#gpgtnzpseh .gt_empty_group_heading {
+#ncgcsnajjm .gt_empty_group_heading {
   padding: 0.5px;
   color: #1B2D0B;
   background-color: #EFEFF8;
@@ -385,15 +385,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#gpgtnzpseh .gt_from_md > :first-child {
+#ncgcsnajjm .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#gpgtnzpseh .gt_from_md > :last-child {
+#ncgcsnajjm .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#gpgtnzpseh .gt_row {
+#ncgcsnajjm .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -412,7 +412,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#gpgtnzpseh .gt_stub {
+#ncgcsnajjm .gt_stub {
   color: #1B2D0B;
   background-color: #EFEFF8;
   font-size: 100%;
@@ -425,7 +425,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#gpgtnzpseh .gt_stub_row_group {
+#ncgcsnajjm .gt_stub_row_group {
   color: #1B2D0B;
   background-color: #EFEFF8;
   font-size: 100%;
@@ -439,15 +439,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#gpgtnzpseh .gt_row_group_first td {
+#ncgcsnajjm .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#gpgtnzpseh .gt_row_group_first th {
+#ncgcsnajjm .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#gpgtnzpseh .gt_summary_row {
+#ncgcsnajjm .gt_summary_row {
   color: #1B2D0B;
   background-color: #EFEFF8;
   text-transform: inherit;
@@ -457,16 +457,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#gpgtnzpseh .gt_first_summary_row {
+#ncgcsnajjm .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#gpgtnzpseh .gt_first_summary_row.thick {
+#ncgcsnajjm .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#gpgtnzpseh .gt_last_summary_row {
+#ncgcsnajjm .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -476,7 +476,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#gpgtnzpseh .gt_grand_summary_row {
+#ncgcsnajjm .gt_grand_summary_row {
   color: #1B2D0B;
   background-color: #EFEFF8;
   text-transform: inherit;
@@ -486,7 +486,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#gpgtnzpseh .gt_first_grand_summary_row {
+#ncgcsnajjm .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -496,7 +496,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#gpgtnzpseh .gt_last_grand_summary_row_top {
+#ncgcsnajjm .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -506,11 +506,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#gpgtnzpseh .gt_striped {
+#ncgcsnajjm .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#gpgtnzpseh .gt_table_body {
+#ncgcsnajjm .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -519,7 +519,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#gpgtnzpseh .gt_footnotes {
+#ncgcsnajjm .gt_footnotes {
   color: #1B2D0B;
   background-color: #EFEFF8;
   border-bottom-style: none;
@@ -533,7 +533,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#gpgtnzpseh .gt_footnote {
+#ncgcsnajjm .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -542,7 +542,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#gpgtnzpseh .gt_sourcenotes {
+#ncgcsnajjm .gt_sourcenotes {
   color: #1B2D0B;
   background-color: #EFEFF8;
   border-bottom-style: none;
@@ -556,7 +556,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#gpgtnzpseh .gt_sourcenote {
+#ncgcsnajjm .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -564,72 +564,72 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#gpgtnzpseh .gt_left {
+#ncgcsnajjm .gt_left {
   text-align: left;
 }
 
-#gpgtnzpseh .gt_center {
+#ncgcsnajjm .gt_center {
   text-align: center;
 }
 
-#gpgtnzpseh .gt_right {
+#ncgcsnajjm .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#gpgtnzpseh .gt_font_normal {
+#ncgcsnajjm .gt_font_normal {
   font-weight: normal;
 }
 
-#gpgtnzpseh .gt_font_bold {
+#ncgcsnajjm .gt_font_bold {
   font-weight: bold;
 }
 
-#gpgtnzpseh .gt_font_italic {
+#ncgcsnajjm .gt_font_italic {
   font-style: italic;
 }
 
-#gpgtnzpseh .gt_super {
+#ncgcsnajjm .gt_super {
   font-size: 65%;
 }
 
-#gpgtnzpseh .gt_footnote_marks {
+#ncgcsnajjm .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#gpgtnzpseh .gt_asterisk {
+#ncgcsnajjm .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#gpgtnzpseh .gt_indent_1 {
+#ncgcsnajjm .gt_indent_1 {
   text-indent: 5px;
 }
 
-#gpgtnzpseh .gt_indent_2 {
+#ncgcsnajjm .gt_indent_2 {
   text-indent: 10px;
 }
 
-#gpgtnzpseh .gt_indent_3 {
+#ncgcsnajjm .gt_indent_3 {
   text-indent: 15px;
 }
 
-#gpgtnzpseh .gt_indent_4 {
+#ncgcsnajjm .gt_indent_4 {
   text-indent: 20px;
 }
 
-#gpgtnzpseh .gt_indent_5 {
+#ncgcsnajjm .gt_indent_5 {
   text-indent: 25px;
 }
 
-#gpgtnzpseh .katex-display {
+#ncgcsnajjm .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#gpgtnzpseh div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ncgcsnajjm div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -825,7 +825,7 @@ ul.task-list li input[type="checkbox"] {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/dru\.quarto\.pub\/brandthis-demo");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
