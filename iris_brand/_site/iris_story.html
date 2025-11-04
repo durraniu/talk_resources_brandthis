@@ -97,10 +97,21 @@ ul.task-list li input[type="checkbox"] {
     <span class="navbar-title">{brandyml} Demo</span>
     </a>
   </div>
-        <div class="quarto-navbar-tools tools-end">
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
     <a href="https://github.com/durraniu/brandthis" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
 </div>
-          <div id="quarto-search" class="" title="Search"></div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -129,7 +140,7 @@ ul.task-list li input[type="checkbox"] {
 <p>This story explores the famous Iris dataset using R and <code>ggplot2</code>.</p>
 <div class="cr-section cr-column-screen sidebar-left">
 <div class="narrative-col">
-<div class="trigger new-trigger" data-focus-on="cr-iris" data-scale-by="1.3">
+<div class="trigger new-trigger" data-scale-by="1.3" data-focus-on="cr-iris">
 <div class="narrative">
 <p>Let’s explore the Iris flowers dataset. </p>
 </div>
@@ -173,23 +184,23 @@ ul.task-list li input[type="checkbox"] {
 <div id="cr-iris" class="sticky">
 <div class="cell">
 <div class="cell-output-display">
-<div id="xulalaibkq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#xulalaibkq table {
+<div id="gpgtnzpseh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#gpgtnzpseh table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#xulalaibkq thead, #xulalaibkq tbody, #xulalaibkq tfoot, #xulalaibkq tr, #xulalaibkq td, #xulalaibkq th {
+#gpgtnzpseh thead, #gpgtnzpseh tbody, #gpgtnzpseh tfoot, #gpgtnzpseh tr, #gpgtnzpseh td, #gpgtnzpseh th {
   border-style: none;
 }
 
-#xulalaibkq p {
+#gpgtnzpseh p {
   margin: 0;
   padding: 0;
 }
 
-#xulalaibkq .gt_table {
+#gpgtnzpseh .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -215,12 +226,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#xulalaibkq .gt_caption {
+#gpgtnzpseh .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#xulalaibkq .gt_title {
+#gpgtnzpseh .gt_title {
   color: #1B2D0B;
   font-size: 125%;
   font-weight: initial;
@@ -232,7 +243,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#xulalaibkq .gt_subtitle {
+#gpgtnzpseh .gt_subtitle {
   color: #1B2D0B;
   font-size: 85%;
   font-weight: initial;
@@ -244,7 +255,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#xulalaibkq .gt_heading {
+#gpgtnzpseh .gt_heading {
   background-color: #EFEFF8;
   text-align: center;
   border-bottom-color: #EFEFF8;
@@ -256,13 +267,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#xulalaibkq .gt_bottom_border {
+#gpgtnzpseh .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#xulalaibkq .gt_col_headings {
+#gpgtnzpseh .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -277,7 +288,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#xulalaibkq .gt_col_heading {
+#gpgtnzpseh .gt_col_heading {
   color: #1B2D0B;
   background-color: #EFEFF8;
   font-size: 100%;
@@ -297,7 +308,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#xulalaibkq .gt_column_spanner_outer {
+#gpgtnzpseh .gt_column_spanner_outer {
   color: #1B2D0B;
   background-color: #EFEFF8;
   font-size: 100%;
@@ -309,15 +320,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#xulalaibkq .gt_column_spanner_outer:first-child {
+#gpgtnzpseh .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#xulalaibkq .gt_column_spanner_outer:last-child {
+#gpgtnzpseh .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#xulalaibkq .gt_column_spanner {
+#gpgtnzpseh .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -329,11 +340,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#xulalaibkq .gt_spanner_row {
+#gpgtnzpseh .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#xulalaibkq .gt_group_heading {
+#gpgtnzpseh .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -359,7 +370,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#xulalaibkq .gt_empty_group_heading {
+#gpgtnzpseh .gt_empty_group_heading {
   padding: 0.5px;
   color: #1B2D0B;
   background-color: #EFEFF8;
@@ -374,15 +385,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#xulalaibkq .gt_from_md > :first-child {
+#gpgtnzpseh .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#xulalaibkq .gt_from_md > :last-child {
+#gpgtnzpseh .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#xulalaibkq .gt_row {
+#gpgtnzpseh .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -401,7 +412,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#xulalaibkq .gt_stub {
+#gpgtnzpseh .gt_stub {
   color: #1B2D0B;
   background-color: #EFEFF8;
   font-size: 100%;
@@ -414,7 +425,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#xulalaibkq .gt_stub_row_group {
+#gpgtnzpseh .gt_stub_row_group {
   color: #1B2D0B;
   background-color: #EFEFF8;
   font-size: 100%;
@@ -428,15 +439,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#xulalaibkq .gt_row_group_first td {
+#gpgtnzpseh .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#xulalaibkq .gt_row_group_first th {
+#gpgtnzpseh .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#xulalaibkq .gt_summary_row {
+#gpgtnzpseh .gt_summary_row {
   color: #1B2D0B;
   background-color: #EFEFF8;
   text-transform: inherit;
@@ -446,16 +457,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#xulalaibkq .gt_first_summary_row {
+#gpgtnzpseh .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#xulalaibkq .gt_first_summary_row.thick {
+#gpgtnzpseh .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#xulalaibkq .gt_last_summary_row {
+#gpgtnzpseh .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -465,7 +476,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#xulalaibkq .gt_grand_summary_row {
+#gpgtnzpseh .gt_grand_summary_row {
   color: #1B2D0B;
   background-color: #EFEFF8;
   text-transform: inherit;
@@ -475,7 +486,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#xulalaibkq .gt_first_grand_summary_row {
+#gpgtnzpseh .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -485,7 +496,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#xulalaibkq .gt_last_grand_summary_row_top {
+#gpgtnzpseh .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -495,11 +506,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#xulalaibkq .gt_striped {
+#gpgtnzpseh .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#xulalaibkq .gt_table_body {
+#gpgtnzpseh .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -508,7 +519,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#xulalaibkq .gt_footnotes {
+#gpgtnzpseh .gt_footnotes {
   color: #1B2D0B;
   background-color: #EFEFF8;
   border-bottom-style: none;
@@ -522,7 +533,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#xulalaibkq .gt_footnote {
+#gpgtnzpseh .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -531,7 +542,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#xulalaibkq .gt_sourcenotes {
+#gpgtnzpseh .gt_sourcenotes {
   color: #1B2D0B;
   background-color: #EFEFF8;
   border-bottom-style: none;
@@ -545,7 +556,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#xulalaibkq .gt_sourcenote {
+#gpgtnzpseh .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -553,72 +564,72 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#xulalaibkq .gt_left {
+#gpgtnzpseh .gt_left {
   text-align: left;
 }
 
-#xulalaibkq .gt_center {
+#gpgtnzpseh .gt_center {
   text-align: center;
 }
 
-#xulalaibkq .gt_right {
+#gpgtnzpseh .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#xulalaibkq .gt_font_normal {
+#gpgtnzpseh .gt_font_normal {
   font-weight: normal;
 }
 
-#xulalaibkq .gt_font_bold {
+#gpgtnzpseh .gt_font_bold {
   font-weight: bold;
 }
 
-#xulalaibkq .gt_font_italic {
+#gpgtnzpseh .gt_font_italic {
   font-style: italic;
 }
 
-#xulalaibkq .gt_super {
+#gpgtnzpseh .gt_super {
   font-size: 65%;
 }
 
-#xulalaibkq .gt_footnote_marks {
+#gpgtnzpseh .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#xulalaibkq .gt_asterisk {
+#gpgtnzpseh .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#xulalaibkq .gt_indent_1 {
+#gpgtnzpseh .gt_indent_1 {
   text-indent: 5px;
 }
 
-#xulalaibkq .gt_indent_2 {
+#gpgtnzpseh .gt_indent_2 {
   text-indent: 10px;
 }
 
-#xulalaibkq .gt_indent_3 {
+#gpgtnzpseh .gt_indent_3 {
   text-indent: 15px;
 }
 
-#xulalaibkq .gt_indent_4 {
+#gpgtnzpseh .gt_indent_4 {
   text-indent: 20px;
 }
 
-#xulalaibkq .gt_indent_5 {
+#gpgtnzpseh .gt_indent_5 {
   text-indent: 25px;
 }
 
-#xulalaibkq .katex-display {
+#gpgtnzpseh .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#xulalaibkq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#gpgtnzpseh div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -814,7 +825,7 @@ ul.task-list li input[type="checkbox"] {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/dru\.quarto\.pub\/brandthis-demo");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

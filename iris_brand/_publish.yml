@@ -1,0 +1,4 @@
+- source: project
+  quarto-pub:
+    - id: 6b7170ab-ad9c-4734-a64a-42e8c89b93b6
+      url: https://dru.quarto.pub/brandthis-demo
